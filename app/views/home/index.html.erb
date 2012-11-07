@@ -1,0 +1,15 @@
+<div class="left_content">
+  <% if(current_user.present?) %>
+    <% @users.each do |user| %>
+     <%= user.name %>
+    <%end%>
+  <%end%>
+</div>
+<div class="right_content">
+  <%= image_tag("admin.jpg") %>
+  <div class="user_info">
+    Md Nazrul Islam
+    nazrulku07@gmail.com
+    01722647240
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<h1>Listing bazars</h1>
+
+<table>
+  <tr>
+    <th>Month</th>
+    <th>Year</th>
+    <th>Date</th>
+    <th>Description</th>
+    <th>Total</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bazars.each do |bazar| %>
+  <tr>
+    <td><%= bazar.month %></td>
+    <td><%= bazar.year %></td>
+    <td><%= bazar.date %></td>
+    <td><%= bazar.description %></td>
+    <td><%= bazar.total %></td>
+    <td><%= link_to 'Show', bazar %></td>
+    <td><%= link_to 'Edit', edit_bazar_path(bazar) %></td>
+    <td><%= link_to 'Destroy', bazar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bazar', new_bazar_path %>

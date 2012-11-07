@@ -1,0 +1,98 @@
+<div class="left_content">
+  <h1 class="content_header"> Issue New Bill </h1>
+  <div class="new_bill">
+    <%= form_for(@account) do |f| %>
+      <% if @account.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+          <ul>
+            <% @account.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <div class="field">
+        <%= f.label :memebr %>
+        <%= f.collection_select(:user_id, User.all, :id, :name) %>
+      </div>
+      <div class="field">
+        <%= f.label :month %>
+        <%= f.select :month, options_for_select([["Jan", '1'], ["Feb", '2'], ["Mer", '3'], ["Apr", '4'], ["May", '5'], ["Jun", '6'], ["Jul", '7'], ["Aug", '8'], ["Sep", '9'], ["Oct", '10'], ["Nav", '11'], ["Dec", '12'],  ]) %>
+      </div>
+      <div class="field">
+        <%= f.label :year %>
+        <%= f.select :year, options_for_select(['2011', '2012', '2013', '2014', '2015']) %>
+      </div>
+
+      <%= f.fields_for :bills do |b| %>
+        <table id="bill_chart" class="table table-striped table-bordered table-condensed" cellpadding="0" cellspacing="0">
+          <thead>
+          <th> Bill Name </th>
+          <th> Amount </th>
+          </thead>
+          <tbody>
+            <tr>
+              <td> House Rent </td>
+              <td> <%= b.text_field :house_rent %> </td>
+            </tr>
+            <tr>
+              <td> Utility Bill </td>
+              <td> <%= b.text_field :gas_bill %> </td>
+            </tr>
+            <tr>
+              <td> Meal </td>
+              <td> <%= b.text_field :meal %> </td>
+            </tr>
+            <tr>
+              <td> Service(cook) </td>
+              <td> <%= b.text_field :service %> </td>
+            </tr>
+            <tr>
+              <td> Extra </td>
+              <td> <%= b.text_field :extra %> </td>
+            </tr>
+          </tbody>
+          <tfoot>
+          <th style="text-align: right;"> Total </th>
+          <th> 0 </th>
+          </tfoot>
+        </table>
+      <%end%>
+      <div class="field">
+        <%= f.label :paid %>
+        <%= f.text_field :paid %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Create Bill", :class => "sample btn custom large k" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="right_content">
+  <h1 class="content_header"> <span style="font-size: 16px;"> Bill For Member </span> </h1>
+  <div id="user_info">
+    <%= render :partial => "shared/user_info", :locals => {:user => @user} %>
+  </div>
+</div>
+<script type="text/javascript">
+  $("#account_user_id").change(function()
+  {
+    id = $("#account_user_id").val();
+    alert(id);
+    $.ajax(
+    {
+      type: "post",
+      url: "<%=  account_user_account_path('user_id') %>",
+      dataType: "script",
+      data: {user_id: id},
+      success: function(res)
+      {
+      },
+      error: function(e){
+        alert('Error: ' + e);
+      }
+    })
+  });
+</script>

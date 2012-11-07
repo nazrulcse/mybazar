@@ -1,0 +1,72 @@
+<div class="left_content">
+  <form action="<%= accounts_path %>">
+    <table class="table table-striped table-bordered table-condensed" cellpadding="0" cellspacing="0">
+      <thead>
+      <th> Month </th>
+      <th> Month </th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= select_tag :month, options_for_select([["Jan", '1'], ["Feb", '2'], ["Mer", '3'], ["Apr", '4'], ["May", '5'], ["Jun", '6'], ["Jul", '7'], ["Aug", '8'], ["Sep", '9'], ["Oct", '10'], ["Nav", '11'], ["Dec", '12'],  ]) %>
+          </td>
+          <td>
+            <%= select_tag :year, options_for_select(['2011', '2012', '2013', '2014', '2015']) %>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+      <th></th>
+      <th>
+        <input type="submit" value="Search" class="sample btn custom large k"/>
+      </th>
+      </tfoot>
+    </table>
+  </form>
+  <div class="show_account">
+    <table class="table table-striped table-bordered table-condensed" cellpadding="0" cellspacing="0">
+      <thead>
+      <th>
+        <table class="table table-striped table-bordered table-condensed" cellpadding="0" cellspacing="0">
+          <thead>
+          <th class="hd"> Month </th>
+          <th class="hd"> Year </th>
+          <th> Paid </th>
+          </thead>
+        </table>
+      </th>
+      </thead>
+      <tbody>
+        <% @accounts.each do |account| %>
+          <tr>
+            <td>
+              <table class="table table-striped table-bordered table-condensed" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td class="hd"> <%= account.month %> </td>
+                  <td class="hd"> <%= account.year %> </td>
+                  <td> <%= account.paid %> </td>
+                  <td style="width: 20px;"> <span class="detail">  </span> </td>
+                </tr>
+              </table>
+              <%= render :partial => "bill", :locals => {:bill => account.bills.first} %>
+            </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="right_content">
+  <%= render :partial => 'shared/user_info', :locals => {:user => current_user} %>
+</div>
+<script type="text/javascript">
+  $(".detail").click(function()
+{
+  if($(this).parent().parent().parent().parent().next().is(":visible"))
+  {
+    $(this).parent().parent().parent().parent().next().hide();
+  }
+  else
+    $(this).parent().parent().parent().parent().next().show();
+});
+</script>

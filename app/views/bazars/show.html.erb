@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Month:</b>
+  <%= @bazar.month %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @bazar.year %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @bazar.date %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @bazar.description %>
+</p>
+
+<p>
+  <b>Total:</b>
+  <%= @bazar.total %>
+</p>
+
+
+<%= link_to 'Edit', edit_bazar_path(@bazar) %> |
+<%= link_to 'Back', bazars_path %>

@@ -1,0 +1,2 @@
+module BazarsHelper
+end

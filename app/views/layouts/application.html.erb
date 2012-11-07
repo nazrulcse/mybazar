@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Meal</title>
+    
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+
+  </head>
+  <body>
+    <div id="header">
+      <div class="left_logo">
+        <%= link_to("Meal", root_path(), :class => "logo") %> |
+        <a class="contact"> Contact  </a>
+      </div>
+      <div class="search">
+        <%= render :partial => 'shared/search_form' %>
+        <div class="user_session">
+          <% if current_user.present? %>
+            <%= link_to("LogOut(#{current_user.name})", destroy_user_session_path()) %>
+          <%else%>
+            <%= link_to("LogIn", new_user_session_path(), :style => "color:#0088CC;") %> |
+            <%= link_to("SignUp", new_user_registration_path(), :style => "color:#0088CC;") %>
+          <%end%>
+        </div>
+      </div>
+    </div>
+    <div id="main">
+      <div id="nav">
+        <%= link_to("Home", root_path()) %> | <%= link_to("Issue", new_account_path()) %>
+        | <%= link_to("Issue", accounts_path()) %> | <%= link_to("Bazar", new_bazar_path()) %>
+      </div>
+      <div>
+        Slide Show
+      </div>
+      <%= yield %>
+    </div>
+  </body>
+  <div id="footer">
+
+  </div>
+</html>
