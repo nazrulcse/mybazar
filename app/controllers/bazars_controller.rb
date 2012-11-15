@@ -2,8 +2,11 @@ class BazarsController < ApplicationController
   # GET /bazars
   # GET /bazars.json
   def index
-    @bazars = Bazar.all
-
+    if(params[:user_id].present?)
+     @bazars = Bazar.where("month = ? and year = ? and user_id = ?", params[:month], params[:year], params[:user_id])
+    else
+      @bazars = current_user.bazars
+    end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @bazars }
@@ -24,8 +27,7 @@ class BazarsController < ApplicationController
   # GET /bazars/new
   # GET /bazars/new.json
   def new
-    @bazar = Bazar.new
-
+    @bazar = current_user.bazars.build()
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @bazar }
@@ -40,7 +42,7 @@ class BazarsController < ApplicationController
   # POST /bazars
   # POST /bazars.json
   def create
-    @bazar = Bazar.new(params[:bazar])
+    @bazar = current_user.bazars.build(params[:bazar])
 
     respond_to do |format|
       if @bazar.save

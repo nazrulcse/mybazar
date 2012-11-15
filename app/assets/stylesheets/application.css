@@ -24,3 +24,42 @@
     border-width: 0 0 1px;
     padding: 21px 0 4px;
 }
+
+.slides_container {
+    width:950px;
+    height:150px;
+    margin: 5px 0;
+}
+
+.slides_container div {
+    width:960px;
+    height:150px;
+    display:block;
+}
+.slides_container div img
+{
+    height: 150px;
+    width: 960px;
+}
+.pagination li
+{
+   background: none repeat scroll 0 0 #0088CC;
+    border-radius: 200px 200px 200px 200px;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: normal;
+    margin: 3px;
+    padding: 2px;
+}
+
+.pagination
+{
+    position: absolute;
+    top: 0;
+    z-index: 9;
+}
+
+#slides
+{
+    position: relative;
+}
