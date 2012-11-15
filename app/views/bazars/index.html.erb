@@ -1,31 +1,61 @@
-<h1>Listing bazars</h1>
-
-<table>
-  <tr>
-    <th>Month</th>
-    <th>Year</th>
-    <th>Date</th>
-    <th>Description</th>
-    <th>Total</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @bazars.each do |bazar| %>
-  <tr>
-    <td><%= bazar.month %></td>
-    <td><%= bazar.year %></td>
-    <td><%= bazar.date %></td>
-    <td><%= bazar.description %></td>
-    <td><%= bazar.total %></td>
-    <td><%= link_to 'Show', bazar %></td>
-    <td><%= link_to 'Edit', edit_bazar_path(bazar) %></td>
-    <td><%= link_to 'Destroy', bazar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Bazar', new_bazar_path %>
+<div class="left_content">
+  <form action="<%= bazars_path %>">
+    <table class="table table-striped table-bordered table-condensed" cellpadding="0" cellspacing="0">
+      <thead>
+      <th> Month </th>
+      <th> Year </th>
+      <th> Member </th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= select_tag :month, options_for_select([["Jan", '1'], ["Feb", '2'], ["Mer", '3'], ["Apr", '4'], ["May", '5'], ["Jun", '6'], ["Jul", '7'], ["Aug", '8'], ["Sep", '9'], ["Oct", '10'], ["Nav", '11'], ["Dec", '12'],  ]) %>
+          </td>
+          <td>
+            <%= select_tag :year, options_for_select(['2011', '2012', '2013', '2014', '2015']) %>
+          </td>
+          <td>
+            <%= select_tag :user_id, options_for_select(User.all.collect{|user| [user.name, user.id]}, {:include_blank => true}) %>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+      <th></th>
+      <th>
+        <input type="submit" value="Search" class="sample btn custom large k"/>
+      </th>
+      <th></th>
+      </tfoot>
+    </table>
+  </form>
+  <div style="margin-bottom: 5px;">
+    <% if(params[:user_id].present?) %>
+      Search Result For Month: <%= params[:month] %> | Year: <%= params[:year] %>
+    <%end%>
+  </div>
+  <div class="show_account">
+    <table class="table table-striped table-bordered table-condensed" cellpadding="0" cellspacing="0">
+      <thead>
+      <th> Month </th>
+      <th> Year </th>
+      <th> Member </th>
+      <th> Date </th>
+      <th> Total </th>
+      </thead>
+      <tbody>
+        <% @bazars.each do |bazar| %>
+          <tr>
+            <td> <%= bazar.month %> </td>
+            <td> <%= bazar.year %> </td>
+            <td> <%= bazar.user.name %> </td>
+            <td> <%= bazar.date %> </td>
+            <td> <%= bazar.total %> </td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="right_content">
+  <%= render :partial => 'shared/user_info', :locals => {:user => current_user} %>
+</div>

@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Meal</title>
-    
+
     <%= stylesheet_link_tag    "application", :media => "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
@@ -29,10 +29,24 @@
     <div id="main">
       <div id="nav">
         <%= link_to("Home", root_path()) %> | <%= link_to("Issue", new_account_path()) %>
-        | <%= link_to("Issue", accounts_path()) %> | <%= link_to("Bazar", new_bazar_path()) %>
+        | <%= link_to("Issue", accounts_path()) %> | <%= link_to("Entry Bazar", new_bazar_path()) %> 
+        | <%= link_to("Bazar", bazars_path()) %>
       </div>
-      <div>
-        Slide Show
+      <div id="slides">
+        <div class="slides_container">
+          <div>
+            <img alt="Slide show" src="/assets/slide/slide1.png"/>
+          </div>
+          <div>
+            <img alt="Slide show" src="/assets/slide/slide2.png"/>
+          </div>
+          <div>
+            <img alt="Slide show" src="/assets/slide/slide3.png"/>
+          </div>
+          <div>
+            <img alt="Slide show" src="assets/slide/slide4.png"/>
+          </div>
+        </div>
       </div>
       <%= yield %>
     </div>
@@ -40,4 +54,38 @@
   <div id="footer">
 
   </div>
+  <script type="text/javascript">
+    $(function(){
+      $("#slides").slides({
+				preload: true,
+				preloadImage: '/assegs/loading.gif',
+				play: 5000,
+				pause: 2500,
+				hoverPause: true,
+				animationStart: function(current){
+					$('.caption').animate({
+						bottom:-35
+					},100);
+					if (window.console && console.log) {
+						// example return of current slide number
+						console.log('animationStart on slide: ', current);
+					};
+				},
+				animationComplete: function(current){
+					$('.caption').animate({
+						bottom:0
+					},200);
+					if (window.console && console.log) {
+						// example return of current slide number
+						console.log('animationComplete on slide: ', current);
+					};
+				},
+				slidesLoaded: function() {
+					$('.caption').animate({
+						bottom:0
+					},200);
+				}
+			});
+    });
+  </script>
 </html>
