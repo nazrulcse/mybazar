@@ -8,7 +8,10 @@ gem 'rails', '3.2.7'
 gem 'mysql2'
 gem 'devise', '~> 1.4.0'
 gem 'heroku'
-#get 'heroku'
+gem 'taps'
+gem 'pg'
+gem 'addressable', '~> 2.3.2'
+gem 'thin'
 
 # Gems used only for assets and not required
 # in production environments by default.
