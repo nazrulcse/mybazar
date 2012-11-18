@@ -1,6 +1,5 @@
 class AccountsController < ApplicationController
-  # GET /accounts
-  # GET /accounts.json
+  before_filter :authenticate_user!
   def index
     if(params[:month].present?)
       @accounts = current_user.accounts.where("month=? and year=?", params[:month], params[:year])

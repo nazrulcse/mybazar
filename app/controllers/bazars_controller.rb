@@ -1,6 +1,5 @@
 class BazarsController < ApplicationController
-  # GET /bazars
-  # GET /bazars.json
+  before_filter :authenticate_user!
   def index
     if(params[:user_id].present?)
      @bazars = Bazar.where("month = ? and year = ? and user_id = ?", params[:month], params[:year], params[:user_id])
