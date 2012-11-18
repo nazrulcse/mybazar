@@ -138,9 +138,12 @@ body
 
 #header .left_logo a
 {
-    text-decoration: none;
-    color: white;
     padding-left: 20px;
+    color: #FFFFFF;
+    font-family: 'Oswald';
+    font-size: 16px;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #441B15;
 }
 
 #header .left_logo a.logo
@@ -184,11 +187,48 @@ body
 
 #nav
 {
-    background: url("/assets/navbg.png") no-repeat;
-    padding: 14px 0 5px 100px;
-    height: 44px;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: url("/assets/navbg.png");
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    height: 53px;
     margin-top: 10px;
-    background-size: 100%;
+    padding: 5px 0 5px 100px;
+}
+
+#nav ul
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#nav ul li
+{
+    position: relative;
+    float: left;
+}
+
+#nav ul li a:hover
+{
+    background: none;
+    background-color: rgba(71, 133, 194, 0.2);
+    text-decoration: underline;
+}
+
+#nav ul li a {
+    color: #FFFFFF;
+    display: block;
+    font-family: 'Oswald';
+    font-size: 16px;
+    padding: 10px 30px;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px #441B15;
+    border-right: solid 1px gray;
 }
 
 .left_content

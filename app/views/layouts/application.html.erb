@@ -28,9 +28,23 @@
     </div>
     <div id="main">
       <div id="nav">
-        <%= link_to("Home", root_path()) %> | <%= link_to("Issue", new_account_path()) %>
-        | <%= link_to("Issue", accounts_path()) %> | <%= link_to("Entry Bazar", new_bazar_path()) %> 
-        | <%= link_to("Bazar", bazars_path()) %>
+        <ul>
+          <li>
+            <%= link_to("Home", root_path()) %> 
+          </li>
+          <li>
+            <%= link_to("New Bill", new_account_path()) %> 
+          </li>
+          <li>
+            <%= link_to("My Bill", accounts_path()) %> 
+          </li>
+          <li>
+            <%= link_to("Entry Bazar", new_bazar_path()) %> 
+          </li>
+          <li>
+            <%= link_to("Bazar", bazars_path()) %>
+          </li>
+        </ul>
       </div>
       <div id="slides">
         <div class="slides_container">
@@ -57,35 +71,35 @@
   <script type="text/javascript">
     $(function(){
       $("#slides").slides({
-				preload: true,
-				preloadImage: '/assegs/loading.gif',
-				play: 5000,
-				pause: 2500,
-				hoverPause: true,
-				animationStart: function(current){
-					$('.caption').animate({
-						bottom:-35
-					},100);
-					if (window.console && console.log) {
-						// example return of current slide number
-						console.log('animationStart on slide: ', current);
-					};
-				},
-				animationComplete: function(current){
-					$('.caption').animate({
-						bottom:0
-					},200);
-					if (window.console && console.log) {
-						// example return of current slide number
-						console.log('animationComplete on slide: ', current);
-					};
-				},
-				slidesLoaded: function() {
-					$('.caption').animate({
-						bottom:0
-					},200);
-				}
-			});
+        preload: true,
+        preloadImage: '/assegs/loading.gif',
+        play: 5000,
+        pause: 2500,
+        hoverPause: true,
+        animationStart: function(current){
+          $('.caption').animate({
+            bottom:-35
+          },100);
+          if (window.console && console.log) {
+            // example return of current slide number
+            console.log('animationStart on slide: ', current);
+          };
+        },
+        animationComplete: function(current){
+          $('.caption').animate({
+            bottom:0
+          },200);
+          if (window.console && console.log) {
+            // example return of current slide number
+            console.log('animationComplete on slide: ', current);
+          };
+        },
+        slidesLoaded: function() {
+          $('.caption').animate({
+            bottom:0
+          },200);
+        }
+      });
     });
   </script>
 </html>
