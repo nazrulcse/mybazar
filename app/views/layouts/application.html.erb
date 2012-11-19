@@ -18,7 +18,8 @@
         <%= render :partial => 'shared/search_form' %>
         <div class="user_session">
           <% if current_user.present? %>
-            <%= link_to("LogOut(#{current_user.name})", destroy_user_session_path()) %>
+            <%#= link_to("LogOut(#{current_user.name})", destroy_user_session_path()) %>
+            <%= link_to("#{current_user.name}", edit_user_registration_path()) %>
           <%else%>
             <%= link_to("LogIn", new_user_session_path(), :style => "color:#0088CC;") %> |
             <%= link_to("SignUp", new_user_registration_path(), :style => "color:#0088CC;") %>

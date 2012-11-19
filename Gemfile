@@ -12,6 +12,7 @@ gem 'taps'
 gem 'pg'
 gem 'addressable', '~> 2.3.2'
 gem 'thin'
+gem "carrierwave"
 
 # Gems used only for assets and not required
 # in production environments by default.
