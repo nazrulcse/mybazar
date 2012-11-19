@@ -1,4 +1,4 @@
-<%= image_tag(user.image_url) %>
+<%= user.image_url.present? ? image_tag(user.image_url) : "No image" %>
 <div class="user_info">
   <%= user.name %>
   <%= user.email %>
