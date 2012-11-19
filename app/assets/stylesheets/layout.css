@@ -241,6 +241,7 @@ body
     padding: 5px;
     min-height: 500px;
 }
+
 .right_content
 {
     display: inline-block;
@@ -334,4 +335,47 @@ ul
 {
     height: 100px;
     width: 300px;
+}
+
+/* show bill */
+
+.account_info
+{
+   border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 0 2px #818181;
+    color: #333333;
+    margin: 0 10px;
+    padding: 10px;
+    text-shadow: 4px 2px 2px #DFDFDF;
+}
+
+.bill_detail
+{
+    padding:10px;
+}
+
+.paid
+{
+    font-weight: bold;
+    float: right;
+}
+
+.account_info span
+{
+    display: inline-block;
+    margin-bottom: 5px;
+    width: 113px;
+    background: none;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='gradient.png', sizingMethod='scale');
+}
+
+.bill_paid
+{
+    background-color: #EBEEDD;
+    border-top: solid 1px #CAD2A7 !important;
+    color: #719602;
+    font-size: 14px;
+    margin: 0 10px 4px;
+    padding: 10px;
+    text-shadow: 2px 1px 1px #CCCCCC;
 }

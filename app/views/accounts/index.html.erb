@@ -61,12 +61,12 @@
 </div>
 <script type="text/javascript">
   $(".detail").click(function()
-{
-  if($(this).parent().parent().parent().parent().next().is(":visible"))
   {
-    $(this).parent().parent().parent().parent().next().hide();
-  }
-  else
-    $(this).parent().parent().parent().parent().next().show();
-});
+    if($(this).parent().parent().parent().parent().next().is(":visible"))
+    {
+      $(this).parent().parent().parent().parent().next().slideUp();
+    }
+    else
+      $(this).parent().parent().parent().parent().next().slideDown();
+  });
 </script>

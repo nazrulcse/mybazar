@@ -1,25 +1,22 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>User:</b>
-  <%= @account.user_id %>
-</p>
-
-<p>
-  <b>Month:</b>
-  <%= @account.month %>
-</p>
-
-<p>
-  <b>Year:</b>
-  <%= @account.year %>
-</p>
-
-<p>
-  <b>Paid:</b>
-  <%= @account.paid %>
-</p>
-
-
-<%= link_to 'Edit', edit_account_path(@account) %> |
-<%= link_to 'Back', accounts_path %>
+<div class="left_content">
+  <div class="account_info">
+    <label> <span> Member: </span> <%= @account.user.name %> </label>
+    <label> <span> Month: </span> <%= Bill::MONTH[@account.month] %> </label>
+    <label> <span> Year: </span> <%= @account.year %> </label>
+  </div>
+  <div class="bill_detail">
+    <%= render :partial => 'bill', :locals => {:bill => @account.bills.first} %>
+  </div>
+  <div class="bill_paid">
+    Your Have Paid <span class="paid"> <%= @account.paid %> ৳ </span>
+  </div>
+  <div class="bill_paid">
+    Your Have To Pay Another <span class="paid"> (<%= total(@account.bills.first) %> - <%= @account.paid %>) = <%= total(@account.bills.first).to_i - @account.paid.to_i %>  ৳ </span>
+  </div>
+</div>
+<div class="right_content">
+  <%= render :partial => 'shared/user_info', :locals => {:user => @account.user} %>
+</div>
+<script type="text/javascript">
+  $("table").removeClass("bill_table");
+</script>
